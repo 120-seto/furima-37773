@@ -5,16 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :nickname, presence: true
   validates :first_name,
-   format: { with: /\A([ぁ-んァ-ン一-龥]|ー)+\z/, message: "は全角文字を使用してください"},
+   format: { with: /\A([ぁ-んァ-ン一-龥]|ー)+\z/, message: "は全角（漢字・ひらがな・カタカナ）を使用してください"},
    presence: true
  validates :last_name,
-   format: { with: /\A([ぁ-んァ-ン一-龥]|ー)+\z/, message: "は全角文字を使用してください"},
+   format: { with: /\A([ぁ-んァ-ン一-龥]|ー)+\z/, message: "は全角（漢字・ひらがな・カタカナ）を使用してください"},
    presence: true
   validates :first_name_kana,
-  format: { with: /\A([ァ-ン]|ー)+\z/, message: "は全角（カタカナ）での入力が必須であること。"},
+  format: { with: /\A([ァ-ン]|ー)+\z/, message: "は全角（カタカナ）を使用してください"},
   presence: true
 validates :last_name_kana,
-  format: { with: /\A([ァ-ン]|ー)+\z/, message: "は全角（カタカナ）での入力が必須であること。"},
+  format: { with: /\A([ァ-ン]|ー)+\z/, message: "は全角（カタカナ）を使用してください"},
   presence: true
   validates :birthday, presence: true
 
