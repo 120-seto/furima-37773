@@ -18,7 +18,7 @@ class User < ApplicationRecord
   format: { with: /\A([ァ-ン]|ー)+\z/, message: "は全角（カタカナ）での入力が必須であること。"},
   presence: true
 validates :last_name_kana,
-  format: { with: /\A([ァ-ン]|ー)+\z/, message: "全角は（カタカナ）での入力が必須であること。"},
+  format: { with: /\A([ァ-ン]|ー)+\z/, message: "は全角（カタカナ）での入力が必須であること。"},
   presence: true
   validates :birthday, presence: true
 
