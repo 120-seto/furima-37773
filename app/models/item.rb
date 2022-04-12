@@ -16,9 +16,11 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :status
   belongs_to :shipping_cost
+  belongs_to :shipping_area
   with_options numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
     validates :status_id
     validates :shipping_cost_id
+    validates :shipping_area_id
  end
 end
