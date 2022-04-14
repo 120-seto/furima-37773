@@ -11,7 +11,8 @@ class Item < ApplicationRecord
   validates :shipping_cost_id, presence: true
   validates :shipping_area_id, presence: true
   validates :shipping_day_id, presence: true
-  validates :price, presence: true, format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters" }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" }
+  validates :price, presence: true, format: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters' },
+                    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -26,5 +27,5 @@ class Item < ApplicationRecord
     validates :shipping_cost_id
     validates :shipping_area_id
     validates :shipping_day_id
- end
+  end
 end
