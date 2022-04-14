@@ -9,9 +9,6 @@ RSpec.describe Item, type: :model do
       it '全ての値が正しく入力されていれば出品できること' do
         expect(@item).to be_valid
       end
-      it 'priceが300以上9999999以下だと登録できる' do
-        expect(@item).to be_valid
-      end
     end
     context '商品情報の入力がうまくいかない時' do
       it 'imageが空だと出品できない' do
