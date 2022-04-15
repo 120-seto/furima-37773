@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  #has_one :customer
+  # has_one :customer
   has_one_attached :image
 
   validates :image, presence: true
@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   validates :shipping_area_id, presence: true
   validates :shipping_day_id, presence: true
   validates :price, presence: true, numericality: { only_integer: true, message: 'is invalid. Input half-width characters' },
-                                       inclusion: { in: (300..9_999_999), message: 'is out of setting range' }
+                    inclusion: { in: (300..9_999_999), message: 'is out of setting range' }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
