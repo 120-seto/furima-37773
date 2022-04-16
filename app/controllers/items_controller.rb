@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
        redirect_to root_path
      end
     else
-      render :edit
+      render root_path
     end
   end
 
