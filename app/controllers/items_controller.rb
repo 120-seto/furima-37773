@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
+  before_action :set_item, only: [:show, :edit, :update]
   before_action :ensure_current_user, only: [:edit, :update]
   # before_action :prevent_url, only: [:index, :create]
 
@@ -21,15 +22,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path(@item)
     else
@@ -44,10 +42,15 @@ class ItemsController < ApplicationController
                                  :shipping_day_id, :price, :image).merge(user_id: current_user.id)
   end
 
+  def set_item
+    @item = Item.find(params[:id])
+   end
+
   def ensure_current_user
     item = Item.find(params[:id])
-    redirect_to root_path if item.user_id != current_user.id
+    redirect_to root_path if @item.user_id != current_user.id
   end
+
   # def prevent_url
   # if item.user_id != current_user.id || @item.customer != nil
   # redirect_to root_path
