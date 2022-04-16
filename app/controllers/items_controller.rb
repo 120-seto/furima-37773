@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-   end
+  end
 
   def ensure_current_user
     item = Item.find(params[:id])
