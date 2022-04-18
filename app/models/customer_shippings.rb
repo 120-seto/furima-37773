@@ -3,7 +3,6 @@ class CustomerShippings
   attr_accessor :post_code, :shipping_area_id, :city, :address, :building_name, :phone_number, :customer, :user_id, :item_id
 
   with_options presence: true do
-    validates :customer
     validates :post_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :city
     validates :address
