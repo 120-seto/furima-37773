@@ -5,6 +5,12 @@ class CustomersController < ApplicationController
   end
 
   def create
-    binding.pry
+    @customer_shipping =CustomerShippings.new(customer_params)
+    if @customer_shipping.valid?
+      @customer_shipping.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 end
