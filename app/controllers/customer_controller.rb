@@ -1,5 +1,8 @@
 class CustomerController < ApplicationController
 
   def index
-    @customer_controller = CustomerShipping.new
+    @customer_shipping = CustomerShipping.new
+  end
+
+  def create
   end
