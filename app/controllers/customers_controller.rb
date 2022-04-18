@@ -6,6 +6,7 @@ class CustomersController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @customer_shipping =CustomerShippings.new(customer_params)
     if @customer_shipping.valid?
       @customer_shipping.save
