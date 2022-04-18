@@ -1,4 +1,4 @@
-class CustomerShippings
+class CustomerShipping
   include ActiveModel::Model
   attr_accessor :post_code, :shipping_area_id, :city, :address, :building_name, :phone_number, :customer, :user_id, :item_id
 
