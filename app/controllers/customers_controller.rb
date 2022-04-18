@@ -13,4 +13,9 @@ class CustomersController < ApplicationController
       render :new
     end
   end
+  private
+
+  def customer_params
+    params.require(:customer_shippings).permit(:post_code, :shipping_area_id, :city, :address, :building_name, :phone_number).merge(user_id: current_user.id)
+  end
 end
