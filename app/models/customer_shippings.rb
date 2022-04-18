@@ -11,7 +11,7 @@ class CustomerShippings
     validates :user_id
     validates :item_id
   end
-  validates :shipping_area_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :shipping_area_id, numericality: {other_than: 1, message: "can't be blank"}
 
   def save
    customer = Customer.create(item_id: item_id, user_id: user_id)
