@@ -5,6 +5,8 @@ FactoryBot.define do
     city { '東京都' }
     address { '1-1' }
     building_name { '東京ハイツ' }
-    phone_number { '090-12345678' }
+    phone_number { '09012345678' }
+    association :user
+    association :item
   end
 end
