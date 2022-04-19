@@ -66,6 +66,16 @@ RSpec.describe CustomerShipping, type: :model do
         @customer_shipping.valid?
         expect(@customer_shipping.errors.full_messages).to include("Item can't be blank")
       end
+      it "priceが空では保存ができないこと" do
+        @customer_shipping.price = nil
+        @customer_shipping.valid?
+        expect(@customer_shipping.errors.full_messages).to include("Price can't be blank")
+      end
+      it "tokenが空では登録できないこと" do
+        @customer_shipping.token = nil
+        @customer_shipping.valid?
+        expect(@customer_shipping.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end

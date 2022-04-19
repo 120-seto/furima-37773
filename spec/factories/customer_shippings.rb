@@ -6,6 +6,8 @@ FactoryBot.define do
     address { '1-1' }
     building_name { '東京ハイツ' }
     phone_number { '09012345678' }
+    price {3000}
+    token {"tok_abcdefghijk00000000000000000"}
     association :user
     association :item
   end
