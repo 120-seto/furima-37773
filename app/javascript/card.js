@@ -3,7 +3,6 @@ const pay = () => {
   const submit = document.getElementById("charge-form");
   submit.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("フォーム送信時にイベント発火")
 
 const formResult = document.getElementById("charge-form");
 const formData = new FormData(formResult);
@@ -21,7 +20,6 @@ Payjp.createToken(card, (status, response) => {
         const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} name='token'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
-        debugger;
   }
   document.getElementById("card_number").removeAttribute("name");
   document.getElementById("card_cvc").removeAttribute("name");
