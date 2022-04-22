@@ -1,15 +1,10 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: [:index, :new, :create]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @customer_shipping = CustomerShipping.new
     redirect_to root_path if current_user == @item.user || !@item.customer.nil?
-  end
-
-  def new
-    @customer_shipping = CustomerShipping.new
   end
 
   def create
@@ -38,10 +33,6 @@ class CustomersController < ApplicationController
       card: customer_params[:token],
       currency: 'jpy'
     )
-  end
-
-  def move_to_index
-    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def set_item
