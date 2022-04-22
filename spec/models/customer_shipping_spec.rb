@@ -9,7 +9,6 @@ RSpec.describe CustomerShipping, type: :model do
       sleep(1)
     end
     
-
     context '内容に問題ない場合' do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@customer_shipping).to be_valid

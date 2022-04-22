@@ -13,7 +13,6 @@ class CustomerShipping
     validates :item_id
   end
   
-
   def save
    customer = Customer.create(item_id: item_id, user_id: user_id)
 

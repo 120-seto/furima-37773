@@ -29,10 +29,11 @@
         ¥<%= @item.price %>
       </p>
     </div>
+    
     <%# /支払額の表示 %>
     <%= form_with model: @customer_shipping, url: item_customers_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
-    <%#= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%= render 'shared/error_messages', model: @customer_shipping %>
+
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
