@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :ensure_current_user, only: [:edit, :update]
+  before_action :prevent_url, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.all.order(created_at: :desc)
@@ -57,5 +58,11 @@ class ItemsController < ApplicationController
   def ensure_current_user
     item = Item.find(params[:id])
     redirect_to root_path if @item.user_id != current_user.id
+  end
+
+  def prevent_url
+    if @item.user_id != current_user.id || @item.customer != nil
+      redirect_to root_path
+    end
   end
 end
