@@ -8,7 +8,7 @@ RSpec.describe CustomerShipping, type: :model do
       @customer_shipping = FactoryBot.build(:customer_shipping, user_id: user.id, item_id: item.id)
       sleep(1)
     end
-    
+
     context '内容に問題ない場合' do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@customer_shipping).to be_valid
@@ -35,7 +35,7 @@ RSpec.describe CustomerShipping, type: :model do
         @customer_shipping.valid?
         expect(@customer_shipping.errors.full_messages).to include("Shipping area can't be blank")
       end
-      it 'cityが空だと保存できないこと'do
+      it 'cityが空だと保存できないこと' do
         @customer_shipping.city = ''
         @customer_shipping.valid?
         expect(@customer_shipping.errors.full_messages).to include("City can't be blank")
@@ -65,7 +65,7 @@ RSpec.describe CustomerShipping, type: :model do
         @customer_shipping.valid?
         expect(@customer_shipping.errors.full_messages).to include("Item can't be blank")
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @customer_shipping.token = nil
         @customer_shipping.valid?
         expect(@customer_shipping.errors.full_messages).to include("Token can't be blank")
