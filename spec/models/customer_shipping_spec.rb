@@ -50,8 +50,18 @@ RSpec.describe CustomerShipping, type: :model do
         @customer_shipping.valid?
         expect(@customer_shipping.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberは「10桁以上11桁以内」の半角数値でないと保存できないこと' do
+      it 'phone_numberが9桁以下では購入できない' do
+        @customer_shipping.phone_number = '123456789'
+        @customer_shipping.valid?
+        expect(@customer_shipping.errors.full_messages).to include('Phone number is invalid. Include hyphen(-)')
+      end
+      it 'phone_numberが12桁以上では購入できない' do
         @customer_shipping.phone_number = '123456789012'
+        @customer_shipping.valid?
+        expect(@customer_shipping.errors.full_messages).to include('Phone number is invalid. Include hyphen(-)')
+      end
+      it 'phone_numberに半角数字以外が含まれている場合は購入できない（※半角数字以外が一文字でも含まれていれば良い）' do
+        @customer_shipping.phone_number = '1234567890a'
         @customer_shipping.valid?
         expect(@customer_shipping.errors.full_messages).to include('Phone number is invalid. Include hyphen(-)')
       end
