@@ -1,17 +1,14 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_signed_in, except: :index
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @item = Item.find(params[:item_id])
     @customer_shipping = CustomerShipping.new
-    if current_user == @item.user
-      redirect_to root_path
+      if current_user == @item.user || @item.customer != nil
+        redirect_to root_path
+      end
   end
-  if @item.user_id != current_user.id
-    redirect_to root_path
-  end
-end
 
   def new
     @item = Item.find(params[:item_id])
@@ -42,10 +39,9 @@ end
       amount: @item.price,
       card: customer_params[:token],
       currency: 'jpy'
+    )
   end
-  def move_to_signed_in
-    unless user_signed_in?
-      redirect_to  root_path
-    end
+  def move_to_index
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
